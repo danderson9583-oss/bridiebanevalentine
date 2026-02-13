@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine's Card</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background: #ffe6e6;
+    text-align: center;
+    margin: 0;
+    overflow: hidden;
+  }
+  #card {
+    width: 90%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff0f5;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    cursor: pointer;
+    position: relative;
+  }
+  #message {
+    opacity: 0;
+    transition: opacity 2s;
+    font-size: 1.2em;
+    margin-top: 20px;
+  }
+  .heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    transform: rotate(45deg);
+    left: 50%;
+    top: 50%;
+    animation: float 3s linear infinite;
+    opacity: 0;
+  }
+  .heart:before,
+  .heart:after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+  }
+  .heart:before { top: -10px; left: 0; }
+  .heart:after { left: 10px; top: 0; }
+
+  @keyframes float {
+    0% { transform: translate(0,0) rotate(45deg); opacity:1; }
+    100% { transform: translate(-50px,-300px) rotate(45deg); opacity:0; }
+  }
+</style>
+</head>
+<body>
+
+<div id="card">
+  <h1>Hey Bridie ❤️</h1>
+  <img src="bridie.jpg" alt="Us Together" style="width:100%; border-radius:15px;">
+  <div id="message">
+    <p>Bridie, you’re beautiful, playful, caring, and funny. Being around you feels as natural as breathing.</p>
+    <p>I can’t wait to spend more time together — picnics, camping, dance parties, karaoke, traveling, and making amazing memories!</p>
+    <p>💖 Cheeky line: “You + Me + This Card = Pure Magic!” 💖</p>
+  </div>
+</div>
+
+<audio id="music" src="romantic-music.mp3"></audio>
+
+<script>
+  const card = document.getElementById('card');
+  const message = document.getElementById('message');
+  const music = document.getElementById('music');
+
+  card.addEventListener('click', () => {
+    message.style.opacity = 1;
+    music.play();
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 90 + '%';
+      heart.style.animationDuration = (2 + Math.random() * 2) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => document.body.removeChild(heart), 3000);
+    }
+  });
+</script>
+
+</body>
+</html>
