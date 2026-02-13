@@ -21,15 +21,18 @@
     perspective: 1500px;
   }
 
-  .card {
-    width: 600px;
-    height: 400px;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 1s ease;
-    cursor: pointer;
-  }
-
+.card {
+  width: 90vw;
+  max-width: 600px;
+  height: 60vh;
+  max-height: 400px;
+  aspect-ratio: 3 / 2;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+  cursor: pointer;
+}
+  
   .card.open {
     transform: rotateY(-180deg);
   }
